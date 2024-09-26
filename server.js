@@ -42,14 +42,14 @@ app.set('views',__dirname + './views');
 
 //retrieve all patient
 app.get('', (req, res) => {
-    const getPaitents = 'SELECT first_name, last_name FROM patient'
-    db.query(getPaitents, (err, result) => {
+    const getPatients = 'SELECT first_name, last_name FROM patients'
+    db.query(getPatients, (err, data) => {
         // if there is an error
         if (err) {
-           return res.status(400).send("Failed to retrieve patients", err)
+           return res.status(400).send("Failed to get patients", err)
         }
-        //res.status(200).render('data', {data})
-        res.status(200).send(data)
+        res.status(200).render('data', {data})
+        //res.status(200).send(data)
     })
 })
 
